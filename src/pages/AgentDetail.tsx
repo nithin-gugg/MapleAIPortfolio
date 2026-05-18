@@ -210,9 +210,14 @@ export default function AgentDetails() {
             <div className="group relative w-full">
               <div className="absolute inset-0 bg-brand-accent blur-xl opacity-20 group-hover:opacity-60 transition-opacity"></div>
 
-              <button className="relative w-full py-5 bg-brand-accent text-black text-[10px] font-bold uppercase tracking-[0.3em] hover:scale-[1.02] active:scale-[0.98] transition-all">
+              <a
+                href={agent.exploreLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-center relative w-full py-5 bg-brand-accent text-black text-[10px] font-bold uppercase tracking-[0.3em] hover:scale-[1.02] active:scale-[0.98] transition-all"
+              >
                 Explore Workflow
-              </button>
+              </a>
             </div>
 
             {/* FOOTER */}

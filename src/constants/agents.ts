@@ -14,6 +14,7 @@ export interface AgentLogo {
   longDescription: string;
 
   imageUrl: string;
+  exploreLink: string;
 
   features: string[];
   tech: string[];
@@ -52,6 +53,7 @@ export const CLIENT_LOGOS: AgentLogo[] = [
       "An AI-powered resume analysis tool designed to evaluate resumes against specific job descriptions. The system extracts resume content using NLP and machine learning models, compares it with the job requirements, and generates an ATS compatibility score for candidate shortlisting.\n\nUnlike most market tools with usage limitations, this solution supports bulk processing of up to 50 resumes simultaneously with unlimited usage capability. The platform helps recruiters speed up screening while improving candidate-job matching accuracy.",
 
     imageUrl: "/ats-score.png",
+    exploreLink: "https://maple-ats-score-checker.streamlit.app/",
 
     features: [
       "AI-based resume parsing and keyword extraction",
@@ -106,6 +108,7 @@ export const CLIENT_LOGOS: AgentLogo[] = [
       "An automated interview coordination workflow built to streamline the hiring process. The system manages interview scheduling using candidate details, interviewer information, interview status tracking, and calendar integrations.\n\nThe workflow automates interview invitations, reminder emails, status updates, rejection handling, and calendar meeting creation, reducing manual coordination efforts for HR teams.",
 
     imageUrl: "/interview-scheduling.png",
+    exploreLink: "https://docs.google.com/spreadsheets/d/1cDUjxcnvqOh9bxDQIKBw02Upmb_Ix0_m5BZFyzC7w_c/edit?usp=sharing",
 
     features: [
       "Automated interview scheduling",
@@ -159,6 +162,7 @@ export const CLIENT_LOGOS: AgentLogo[] = [
       "An AI-assisted SEO analysis workflow designed to audit webpage metadata and generate optimized content recommendations. The workflow scrapes webpage HTML content, extracts metadata, analyzes keywords, and provides SEO improvement suggestions.\n\nUsing AI agents, the system rewrites meta descriptions, alt text, and content ideas based on market keyword analysis, helping improve search engine visibility and content structure.",
 
     imageUrl: "/AI-SEO.png",
+    exploreLink: "https://eu2.make.com/public/shared-scenario/JIRTFoXRlgS/phase-1-automation-seo",
 
     features: [
       "Webpage metadata extraction",
@@ -212,6 +216,7 @@ export const CLIENT_LOGOS: AgentLogo[] = [
       "An automated content generation workflow designed for creating SEO-optimized blogs at scale. The workflow integrates with Google Sheets for content tracking and Google Drive for automated document storage and management.\n\nAI agents generate structured blog content, optimize it for SEO, create PDF versions, and automatically upload the generated files into Google Drive while maintaining tracking records.",
 
     imageUrl: "/Blog-generator.png",
+    exploreLink: "https://eu2.make.com/public/shared-scenario/M4wneofemRv/blog-generator",
 
     features: [
       "AI-generated SEO blogs",
@@ -265,6 +270,7 @@ export const CLIENT_LOGOS: AgentLogo[] = [
       "An intelligent lead management workflow designed to analyze website form submissions and automate lead qualification. The system evaluates user inputs against company knowledge documents using a RAG-based approach to determine qualified and non-qualified leads.\n\nBased on the analysis, personalized responses are automatically generated and sent to users. The workflow also stores lead data in Google Sheets for CRM tracking and notifies internal teams about new submissions.",
 
     imageUrl: "/custom-reply.png",
+    exploreLink: "https://eu2.make.com/public/shared-scenario/sGyedwhjAak/integration-webhooks",
 
     features: [
       "Automated lead qualification",
@@ -319,6 +325,7 @@ export const CLIENT_LOGOS: AgentLogo[] = [
       "An AI-enabled HRMS framework designed to simplify recruitment and interview management workflows for non-technical users. The platform combines ATS resume analysis, interview scheduling automation, and HR workflow management into a single structured system.\n\nThe framework focuses on usability with custom-coded modules and simplified interfaces, making AI-powered hiring tools more accessible for HR teams.",
 
     imageUrl: "/mapleHrms.png",
+    exploreLink: "https://maple-careerportal.vercel.app/",
 
     features: [
       "AI-powered resume scoring",
