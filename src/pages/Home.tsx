@@ -97,12 +97,12 @@ export default function Home() {
               onClick={() => navigate("/agents")}
               className="relative px-10 py-5 bg-brand-accent text-xs font-bold uppercase tracking-widest hover:scale-105 transition-transform"
             >
-              View Roster
+              View Workflows
             </button>
           </div>
-          <button className="px-10 py-5 bg-transparent border border-white/20 text-xs font-bold uppercase tracking-widest hover:border-white transition-colors">
+          {/* <button className="px-10 py-5 bg-transparent border border-white/20 text-xs font-bold uppercase tracking-widest hover:border-white transition-colors">
             Architecture
-          </button>
+          </button> */}
         </motion.div>
       </section>
 
