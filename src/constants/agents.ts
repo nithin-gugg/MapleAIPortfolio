@@ -29,7 +29,7 @@ export const CLIENT_LOGOS: AgentLogo[] = [
     status: "READY",
     description: "AI-powered resume analysis designed to evaluate candidates against job descriptions.",
     longDescription: "An AI-powered resume analysis tool designed to evaluate resumes against specific job descriptions. The system extracts resume content using NLP and machine learning models, compares it with the job requirements, and generates an ATS compatibility score for candidate shortlisting.\n\nUnlike most market tools with usage limitations, this solution supports bulk processing of up to 50 resumes simultaneously with unlimited usage capability. The platform helps recruiters speed up screening while improving candidate-job matching accuracy.",
-    imageUrl: "ats-score.png",
+    imageUrl: "/ats-score.png",
     features: [
       "AI-based resume parsing and keyword extraction",
       "Job description matching and ATS scoring",
@@ -48,7 +48,7 @@ export const CLIENT_LOGOS: AgentLogo[] = [
     status: "READY",
     description: "Automated coordination workflow to streamline the hiring process.",
     longDescription: "An automated interview coordination workflow built to streamline the hiring process. The system manages interview scheduling using candidate details, interviewer information, interview status tracking, and calendar integrations.\n\nThe workflow automates interview invitations, reminder emails, status updates, rejection handling, and calendar meeting creation, reducing manual coordination efforts for HR teams.",
-    imageUrl: "interview-scheduling.png",
+    imageUrl: "/interview-scheduling.png",
     features: [
       "Automated interview scheduling",
       "Calendar meeting creation",
@@ -105,7 +105,7 @@ export const CLIENT_LOGOS: AgentLogo[] = [
     status: "READY",
     description: "Intelligent lead management designed to qualify and respond to leads.",
     longDescription: "An intelligent lead management workflow designed to analyze website form submissions and automate lead qualification. The system evaluates user inputs against company knowledge documents using a RAG-based approach to determine qualified and non-qualified leads.\n\nBased on the analysis, personalized responses are automatically generated and sent to users. The workflow also stores lead data in Google Sheets for CRM tracking and notifies internal teams about new submissions.",
-    imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200",
+    imageUrl: "/custom-reply.png",
     features: [
       "Automated lead qualification",
       "AI-based response generation",
