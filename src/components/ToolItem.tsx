@@ -7,7 +7,7 @@ export function ToolItem({ tool }: { tool: typeof TOOLS[0] }) {
         <img 
           src={tool.logoUrl} 
           alt={tool.name} 
-          className="w-full h-full object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+          className="w-full h-full object-contain transition-all duration-300"
           referrerPolicy="no-referrer"
         />
       </div>

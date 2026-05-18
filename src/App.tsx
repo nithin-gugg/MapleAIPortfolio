@@ -19,7 +19,7 @@ export default function App() {
       <Navbar />
 
       <main className="max-w-[1440px] mx-auto px-10 grid grid-cols-12 gap-8 relative min-h-[70vh]">
-        <div className="col-span-1 hidden lg:flex flex-col justify-end pb-24">
+        <div className="col-span-1 hidden lg:flex flex-col justify-end pb-24 sticky top-32 self-start h-[calc(100vh-12rem)]">
           <div className="rotate-[-90deg] origin-bottom-left text-[10px] uppercase font-mono tracking-[0.6em] whitespace-nowrap opacity-20 transform -translate-y-12 translate-x-4">
             {location.pathname.includes("/agents/") 
               ? "System_v4 // Operations" 

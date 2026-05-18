@@ -15,9 +15,7 @@ export function Navbar() {
           to="/"
           className="flex items-center gap-3 hover:opacity-80 transition-opacity"
         >
-          <div className="w-8 h-8 bg-brand-accent rounded-full flex items-center justify-center">
-            <div className="w-3 h-3 bg-white rounded-sm rotate-45"></div>
-          </div>
+          <img src="/favicon.ico" alt="Maple AI" className="w-8 h-8 object-contain" />
           <span className="text-xl font-bold tracking-tighter uppercase italic">Maple.AI</span>
         </Link>
 

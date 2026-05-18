@@ -1,143 +1,230 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { motion } from "motion/react";
-import { Terminal, ArrowUpRight } from "lucide-react";
+// AgentDetails.tsx
+
+import { useParams, Link } from "react-router-dom";
+import { Terminal, ArrowLeft } from "lucide-react";
 import { CLIENT_LOGOS } from "../constants/agents";
 
-export default function AgentDetail() {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const agent = CLIENT_LOGOS.find(a => a.id === Number(id));
+export default function AgentDetails() {
+  const { id } = useParams<{ id: string }>();
+  const agent = CLIENT_LOGOS.find((a) => a.id === Number(id));
 
   if (!agent) {
     return (
-      <div className="py-12 text-center">
-        <h2 className="text-3xl font-bold uppercase italic tracking-wider mb-4">Agent Not Found</h2>
-        <button 
-          onClick={() => navigate("/agents")}
-          className="text-brand-accent font-mono text-[10px] uppercase tracking-widest"
-        >
-          Return to Registry
-        </button>
-      </div>
+      <section className="py-24 text-center max-w-xl mx-auto">
+        <div className="bg-white/5 border border-white/10 rounded-tr-[40px] p-12 backdrop-blur-md relative overflow-hidden">
+          <div className="absolute inset-0 bg-brand-accent/5 blur-xl pointer-events-none"></div>
+          <span className="text-brand-accent font-mono text-[10px] tracking-widest uppercase mb-4 block">
+            [ 404 System Error ]
+          </span>
+          <h2 className="text-3xl font-bold text-white mb-4 uppercase tracking-tight">Agent Not Found</h2>
+          <p className="text-white/60 mb-8 leading-relaxed text-sm">
+            The requested autonomous processing node could not be retrieved from the active database registry. It may have been decommissioned or the ID is invalid.
+          </p>
+          <Link
+            to="/agents"
+            className="inline-block px-8 py-4 bg-brand-accent text-black text-[10px] font-bold uppercase tracking-[0.3em] hover:scale-[1.02] active:scale-[0.98] transition-all"
+          >
+            Return to Registry
+          </Link>
+        </div>
+      </section>
     );
   }
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="col-span-12 py-12 relative"
-    >
-      <button 
-        onClick={() => navigate("/agents")}
-        className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-[10px] uppercase font-mono tracking-widest mb-12"
-      >
-        <span className="text-brand-accent">[</span> Back to Registry <span className="text-brand-accent">]</span>
-      </button>
+    <section className="relative w-full py-4 pb-20">
+      {/* BACK BUTTON */}
+      <div className="mb-8">
+        <Link
+          to="/agents"
+          className="group inline-flex items-center gap-2 text-white/50 hover:text-brand-accent font-mono text-[10px] uppercase tracking-widest transition-colors duration-200"
+        >
+          <ArrowLeft size={12} className="transition-transform duration-200 group-hover:-translate-x-1" />
+          <span>[ Return to Registry ]</span>
+        </Link>
+      </div>
 
       <div className="grid grid-cols-12 gap-12">
+
+        {/* LEFT CONTENT */}
         <div className="col-span-12 lg:col-span-8">
-          <div className="relative aspect-video rounded-tr-[80px] overflow-hidden border border-white/10 mb-12">
-            <img 
-              src={agent.imageUrl} 
-              alt={agent.name} 
-              className="w-full h-full object-cover grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-1000"
-              referrerPolicy="no-referrer"
+
+          {/* IMAGE */}
+          <div className="relative overflow-hidden rounded-[10px] border border-white/10 bg-white/5 mb-12">
+            <img
+              src={agent.imageUrl}
+              alt={agent.name}
+              width={1200}
+              height={700}
+              className="w-full h-auto object-cover"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-brand-bg to-transparent"></div>
-            <div className="absolute top-8 left-8">
-              <div className="text-[10px] font-mono text-brand-accent px-3 py-1.5 bg-brand-accent/10 border border-brand-accent/20 backdrop-blur-md rounded uppercase tracking-widest">
-                #{agent.type}
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+            <div className="absolute bottom-8 left-8">
+              <div className="text-[11px] uppercase tracking-[0.3em] text-brand-accent mb-4">
+                {agent.category}
               </div>
+
+              <h1 className="text-5xl font-bold text-white max-w-2xl leading-tight">
+                {agent.name}
+              </h1>
             </div>
           </div>
 
-          <h2 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase mb-8">
-            {agent.name}<br/>
-            <span className="text-stroke opacity-30 text-transparent">System</span>
-          </h2>
+          {/* DESCRIPTION */}
+          <div className="mb-16">
+            <div className="text-[10px] uppercase tracking-[0.3em] text-brand-accent mb-6">
+              Overview
+            </div>
 
-          <div className="max-w-2xl">
-            <p className="text-white/90 leading-relaxed text-lg mb-12 font-light">
-              {agent.longDescription}
-            </p>
-            
-            <div className="mb-12">
-              <h4 className="text-[10px] font-mono text-brand-accent uppercase tracking-[0.4em] mb-6">Key Features</h4>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {agent.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-white/80 text-sm">
-                    <div className="w-1.5 h-1.5 rounded-full bg-brand-accent mt-1.5 shrink-0"></div>
+            <div className="space-y-6 text-white/70 leading-relaxed text-lg">
+              {agent.longDescription
+                .split("\n\n")
+                .map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+            </div>
+          </div>
+
+          {/* FEATURES */}
+          <div className="mb-16">
+            <div className="text-[10px] uppercase tracking-[0.3em] text-brand-accent mb-8">
+              Key Features
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {agent.features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="p-5 bg-white/5 border border-white/10 rounded-2xl"
+                >
+                  <div className="text-white/80 leading-relaxed">
                     {feature}
-                  </li>
-                ))}
-              </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* TECH STACK */}
+          <div>
+            <div className="text-[10px] uppercase tracking-[0.3em] text-brand-accent mb-8">
+              Technology Stack
             </div>
 
-            <div className="mb-12">
-              <h4 className="text-[10px] font-mono text-brand-accent uppercase tracking-[0.4em] mb-6">Tech Stack</h4>
-              <div className="flex flex-wrap gap-2">
-                {agent.tech.map((t, idx) => (
-                  <span key={idx} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-mono text-white/80 uppercase tracking-widest">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-8 py-12 border-y border-white/5">
-              <div>
-                <h4 className="text-[10px] font-mono text-brand-accent uppercase tracking-widest mb-4">Functional Domain</h4>
-                <p className="text-white">{agent.description}</p>
-              </div>
-              <div>
-                <h4 className="text-[10px] font-mono text-brand-accent uppercase tracking-widest mb-4">Security Protocol</h4>
-                <p className="text-white">AES-256 Quantum Resistant</p>
-              </div>
+            <div className="flex flex-wrap gap-4">
+              {agent.tech.map((item) => (
+                <div
+                  key={item}
+                  className="px-5 py-3 bg-white/5 border border-white/10 rounded-full text-sm text-white"
+                >
+                  {item}
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="col-span-12 lg:col-span-4 h-full">
+        {/* RIGHT SIDEBAR */}
+        <div className="col-span-12 lg:col-span-4 h-full max-w-[340px]">
           <div className="sticky top-32 p-8 bg-white/5 border border-white/10 backdrop-blur-md rounded-tr-[40px]">
-            <div className="flex items-center gap-2 mb-8">
-              <Terminal size={16} className="text-brand-accent" />
-              <span className="text-[10px] font-mono uppercase tracking-widest text-brand-accent">Technical Specs</span>
-            </div>
 
+            {/* CONTENT */}
             <div className="space-y-8 mb-12">
+
               <div>
-                <div className="text-[10px] font-mono text-brand-accent uppercase mb-2">Processing Latency</div>
-                <div className="text-3xl font-mono font-bold text-white">{agent.metrics.latency}</div>
-              </div>
-              <div>
-                <div className="text-[10px] font-mono text-brand-accent uppercase mb-2">Inference Accuracy</div>
-                <div className="text-3xl font-mono font-bold text-white">{agent.metrics.accuracy}</div>
-              </div>
-              <div>
-                <div className="text-[10px] font-mono text-brand-accent uppercase mb-2">Status</div>
-                <div className="flex items-center gap-2">
-                  <div className={`w-2 h-2 rounded-full ${agent.status === 'READY' ? 'bg-green-500' : 'bg-brand-accent'}`}></div>
-                  <span className="text-xs uppercase font-bold tracking-widest text-white">{agent.status}</span>
+                <div className="text-[10px] font-mono text-brand-accent uppercase mb-2">
+                  Primary Objective
+                </div>
+
+                <div className="text-xl font-semibold text-white leading-relaxed">
+                  {agent.overview.objective}
                 </div>
               </div>
+
+              <div>
+                <div className="text-[10px] font-mono text-brand-accent uppercase mb-2">
+                  Automation Impact
+                </div>
+
+                <div className="text-3xl font-mono font-bold text-white">
+                  {agent.overview.impact}
+                </div>
+              </div>
+
+              <div>
+                {/* <div className="text-[10px] font-mono text-brand-accent uppercase mb-3">
+                  AI Capabilities
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {agent.overview.capabilities.map((item) => (
+                    <span
+                      key={item}
+                      className="px-3 py-2 text-[10px] uppercase tracking-wider bg-white/5 border border-white/10 text-white rounded-full"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div> */}
+              </div>
+
+              <div>
+                <div className="text-[10px] font-mono text-brand-accent uppercase mb-2">
+                  Business Outcome
+                </div>
+
+                <p className="text-sm text-white/70 leading-relaxed">
+                  {agent.overview.outcome}
+                </p>
+              </div>
+
+              <div>
+                {/* <div className="text-[10px] font-mono text-brand-accent uppercase mb-2">
+                  Deployment
+                </div> */}
+
+                {/* <div className="text-white font-medium">
+                  {agent.deployment}
+                </div> */}
+              </div>
+
+              <div>
+                {/* <div className="text-[10px] font-mono text-brand-accent uppercase mb-2">
+                  System Status
+                </div> */}
+
+                {/* <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
+
+                  <span className="text-xs uppercase font-bold tracking-widest text-white">
+                    {agent.status}
+                  </span>
+                </div> */}
+              </div>
+
             </div>
 
+            {/* CTA */}
             <div className="group relative w-full">
               <div className="absolute inset-0 bg-brand-accent blur-xl opacity-20 group-hover:opacity-60 transition-opacity"></div>
+
               <button className="relative w-full py-5 bg-brand-accent text-black text-[10px] font-bold uppercase tracking-[0.3em] hover:scale-[1.02] active:scale-[0.98] transition-all">
-                Execute Live Demo
+                Explore Workflow
               </button>
             </div>
 
+            {/* FOOTER */}
             <div className="mt-6 flex justify-center gap-4 text-[10px] font-mono text-brand-accent uppercase">
-              <span>Token Cost: 0.002</span>
+              <span>Enterprise Ready</span>
               <span>•</span>
-              <span>v4.2.1-stable</span>
+              <span>AI Powered</span>
             </div>
+
           </div>
         </div>
       </div>
-    </motion.div>
+    </section>
   );
 }

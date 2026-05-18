@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
 import { CLIENT_LOGOS, TOOLS } from "../constants/agents";
@@ -6,6 +7,35 @@ import { ToolItem } from "../components/ToolItem";
 
 export default function Home() {
   const navigate = useNavigate();
+  const [displayedText, setDisplayedText] = useState("");
+
+  useEffect(() => {
+    const fullText = "[ Deployment Status: All Systems Operational ]";
+    let index = 0;
+    let isMounted = true;
+    let timer: NodeJS.Timeout;
+
+    const type = () => {
+      if (!isMounted) return;
+      if (index <= fullText.length) {
+        setDisplayedText(fullText.slice(0, index));
+        index++;
+        timer = setTimeout(type, 60); // 60ms between letters
+      } else {
+        timer = setTimeout(() => {
+          index = 0;
+          type();
+        }, 10000); // 10 seconds gap
+      }
+    };
+
+    type();
+
+    return () => {
+      isMounted = false;
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <div className="grid grid-cols-12 gap-8">
@@ -15,7 +45,8 @@ export default function Home() {
           animate={{ opacity: 1 }}
           className="text-brand-accent font-mono text-[10px] mb-6 tracking-[0.3em] uppercase block"
         >
-          [ Deployment Status: All Systems Operational ]
+          {displayedText}
+          <span className="animate-pulse text-brand-accent ml-0.5">|</span>
         </motion.span>
         
         <motion.h1 
@@ -24,9 +55,15 @@ export default function Home() {
           transition={{ duration: 0.8, ease: "circOut" }}
           className="text-7xl md:text-8xl lg:text-[110px] leading-[0.85] font-black tracking-tighter mb-10 uppercase italic"
         >
-          Neural<br/>
-          <span className="text-transparent text-stroke opacity-30">Sovereign</span><br/>
-          Agents
+          Enterprise<br/>
+          <span
+            className="text-transparent opacity-70"
+            style={{ WebkitTextStroke: "1px #00DC82" }}
+          >
+            Automation
+          </span>
+          <br />
+          Layer
         </motion.h1>
 
         <motion.p 
@@ -74,7 +111,7 @@ export default function Home() {
         </motion.div>
       </div>
 
-      <section className="col-span-12 pt-24 pb-24 border-t border-white/5" id="network">
+      <section className="col-span-12 pt-24 pb-4 border-t border-white/5" id="network">
         <div className="flex items-center gap-4 mb-12 overflow-hidden">
           <span className="text-[10px] font-mono text-brand-accent uppercase tracking-widest whitespace-nowrap lg:pl-16">Integrated Network</span>
           <div className="h-px w-full bg-white/5"></div>
