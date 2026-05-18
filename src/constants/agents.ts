@@ -360,26 +360,62 @@ export const CLIENT_LOGOS: AgentLogo[] = [
 
 export const TOOLS = [
   {
-    name: "Framer",
-    role: "Website Builder",
-    logoUrl: "https://www.vectorlogo.zone/logos/framer/framer-icon.svg",
-  },
-
-  {
-    name: "Figma",
-    role: "Design Tool",
-    logoUrl: "https://www.vectorlogo.zone/logos/figma/figma-icon.svg",
-  },
-
-  {
     name: "ChatGPT",
     role: "AI Assistant",
-    logoUrl: "https://www.vectorlogo.zone/logos/openai/openai-icon.svg",
+    logoUrl: "/chatgpt.png",
   },
 
   {
     name: "Next.js",
     role: "React Framework",
     logoUrl: "https://www.vectorlogo.zone/logos/nextjs/nextjs-icon.svg",
+  },
+
+   {
+    name: "Make.com",
+    role: "Automation Platform",
+    logoUrl: "/make.jpg",
+  },
+
+  {
+    name: "Zapier.com",
+    role: "Automation Platform",
+    logoUrl: "/zapier.png",
+  },
+
+  {
+    name: "n8n",
+    role: "Automation Platform",
+    logoUrl: "/n8n.png",
+  },
+
+  {
+    name: "Python Framework",
+    role: "Backend and API's",
+    logoUrl: "/python.jpg",
+  },
+
+  {
+    name: "Hugging Face",
+    role: "LLM's Models",
+    logoUrl: "/huggingface.png",
+  },
+
+  {
+    name: "Supabase",
+    role: "Database Provider",
+    logoUrl: "/supabase.jpg",
+  },
+
+   {
+    name: "Gemini API",
+    role: "Gemini 2.5 Flash API model",
+    logoUrl: "/gemini.jpg",
+  },
+
+  {
+    name: "Anthropic Claude",
+    role: "Anthropic Claude Model",
+    logoUrl: "/claude.png",
   },
 ];

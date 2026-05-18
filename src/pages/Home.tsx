@@ -4,6 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { CLIENT_LOGOS, TOOLS } from "../constants/agents";
 import { LogoCard } from "../components/LogoCard";
 import { ToolItem } from "../components/ToolItem";
+import LLMNexus from "../components/forgeui/llm-nexus";
+
+export function LLMNexusExample() {
+  return (
+    <LLMNexus
+      cardTitle="LLM Nexus"
+      cardDescription="A central brain that routes signals across models and distills their thinking into fluent responses."
+    />
+  );
+}
 
 export default function Home() {
   const navigate = useNavigate();
@@ -141,7 +151,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-12 lg:pl-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-12 lg:pl-16 mb-20"
         >
           {TOOLS.map((tool, index) => (
             <motion.div
@@ -155,6 +165,8 @@ export default function Home() {
             </motion.div>
           ))}
         </motion.div>
+
+      
       </section>
     </div>
   );
